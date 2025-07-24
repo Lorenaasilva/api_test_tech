@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.5 on win32)" generated="2025-07-24T01:09:07.247123" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="c:\Users\Lorena\OneDrive\api_server_rest\test_case\login\login.robot">
+<test id="s1-t1" name="CT 01 - Cadastro de Usuário na API" line="8">
+<kw name="GIVEN valid parameters for user creation are passed">
+<msg time="2025-07-24T01:09:07.795278" level="FAIL">No keyword with name 'GIVEN valid parameters for user creation are passed' found.</msg>
+<status status="FAIL" start="2025-07-24T01:09:07.795032" elapsed="0.001781">No keyword with name 'GIVEN valid parameters for user creation are passed' found.</status>
+</kw>
+<kw name="WHEN a POST request is made to the /users endpoint">
+<status status="NOT RUN" start="2025-07-24T01:09:07.798131" elapsed="0.000324"/>
+</kw>
+<kw name="THEN it should return status code 201">
+<status status="NOT RUN" start="2025-07-24T01:09:07.799417" elapsed="0.000235"/>
+</kw>
+<status status="FAIL" start="2025-07-24T01:09:07.792715" elapsed="0.007716">No keyword with name 'GIVEN valid parameters for user creation are passed' found.</status>
+</test>
+<status status="FAIL" start="2025-07-24T01:09:07.253724" elapsed="0.548581"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login" id="s1" pass="0" fail="1" skip="0">Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-07-24T01:09:07.278655" level="ERROR">Error in file 'c:\Users\Lorena\OneDrive\api_server_rest\test_case\login\login.robot' on line 2: Resource file 'C:UsersLorenaOneDriveapi_server_restesourcesteps_post.resource' does not exist.</msg>
+</errors>
+</robot>
