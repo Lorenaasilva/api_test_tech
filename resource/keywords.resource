@@ -5,23 +5,26 @@ Library    String
 
 *** Variables ***
 ${URL_BASE}=    https://serverest.dev
+${valid_email}    om0z@qa.com.br
+${valid_password}    xhsq
 
 
 *** Keywords ***
 Create a new user
-    ${email_aleatorio}    Generate Random String   length=4    chars=[LETTERS] [NUMBERS]
-    ${email_aleatorio}    Convert To Lower Case    ${email_aleatorio}
-    Set Global Variable    ${EMAIL_NEW_USER}       ${email_aleatorio}@qa.com.br
-    ${senha_aleatoria}    Generate Random String   length=4    chars=[LETTERS] [NUMBERS]
-    ${senha_aleatoria}    Convert To Lower Case    ${senha_aleatoria}
-    Set Global Variable    ${PASSWORD_NEW_USER}    ${senha_aleatoria}
+    ${random_email}    Generate Random String   length=4    chars=[LETTERS] [NUMBERS]
+    ${random_email}    Convert To Lower Case    ${random_email}
+    Set Global Variable    ${EMAIL_NEW_USER}       ${random_email}@qa.com.br
+    ${random_password}    Generate Random String   length=4    chars=[LETTERS] [NUMBERS]
+    ${random_password}    Convert To Lower Case    ${random_password}
+    Set Global Variable    ${PASSWORD_NEW_USER}    ${random_password}
 
 Create a session
     ${header}=      Create Dictionary    accept=application/json    Content-Type=application/json
     Create Session    alias=ServeRest    url=${URL_BASE}   headers=${header}
 
-validade status 
-    [Arguments]         ${status_code}
-    Status Should Be    ${status_code}
+
+Verify Status Code
+    [Arguments]    ${expected_status_code}
+    Status Should Be    ${expected_status_code}
 
 

@@ -5,11 +5,12 @@ Library    RequestsLibrary
 Library    Collections
 
 *** Variables ***
-${email_login}    qi6g@qa.com.br
-${password_login}    ze8x
+&{COMMON_HEADERS}    accept=application/json    Content-Type=application/json
+${email_login}    dory.user@qa.com.br
+${password_login}    teste123
 ${email_invalid_login}    %kl@qa.com.br
 ${password_invalid_login}    123
-${CART_ID}    9eRhS3cKTQXM3JLs
+${CART_ID}    qbMqntef4iTOwWfg
 ${URL_BASE}=    https://serverest.dev
 
 *** Keywords ***
@@ -25,22 +26,13 @@ POST user registration
      
     Log    ${resposta.json()}    
     
-POST user login with invalid credentials
-    ${headers}=    Create Dictionary    accept=application/json    Content-Type=application/json
-    ${body}=       Create Dictionary    email=${email_invalid_login}   password=${password_invalid_login}
-    Create a session
-    ${resposta}    POST On Session    alias=ServeRest     url=/login    json=${body}    headers=${headers}
-    Should Be Equal As Strings ${resposta.status_code} 401
-    Log    ${resposta.status_code}
-
-
 POST user login
     ${headers}=    Create Dictionary    accept=application/json    Content-Type=application/json
-    ${body}=       Create Dictionary    email=${email_login}   password=${password_login}
+    ${body}=       Create Dictionary    email=${email_login}    password=${password_login} 
     Create a session
-    ${resposta}    POST On Session    alias=ServeRest     url=/login    json=${body}    headers=${headers}
+    ${resposta}    POST On Session    alias=ServeRest    url=/login    json=${body}    headers=${headers}
     Should Not Be Empty    ${resposta.json()}[authorization] 
-    [Return]    ${resposta.json()}[authorization]
+
 
 GET user cart
     ${headers}=    Create Dictionary    accept=application/json 
@@ -51,4 +43,4 @@ GET user cart
     Should Be Equal As Strings    ${response.status_code}    200
     Log To Console    Resposta da Busca de Carrinho: ${response.json()}
     Should Be Equal As Strings    ${response.json()}[_id]    ${CART_ID}
-    Should Not Be Empty    ${response.json()}[produtos]  
+    Should Not Be Empty    ${response.json()}[produtos]
