@@ -16,10 +16,12 @@ Create a new user
     ${senha_aleatoria}    Convert To Lower Case    ${senha_aleatoria}
     Set Global Variable    ${PASSWORD_NEW_USER}    ${senha_aleatoria}
 
-Creat a session 
-    ${header}=      Create Dictionary    acept=application/json    Content-Type=application/json
-    Create Session    alias=ServeREst    url=${URL_BASE}   headers=${header}
+Create a session
+    ${header}=      Create Dictionary    accept=application/json    Content-Type=application/json
+    Create Session    alias=ServeRest    url=${URL_BASE}   headers=${header}
 
 validade status 
     [Arguments]         ${status_code}
     Status Should Be    ${status_code}
+
+
